@@ -1,0 +1,32 @@
+# Project TODO
+
+- [x] Responsive public portfolio shell with custom AI field notebook / signal lab visual direction
+- [x] React frontend with Node/Express project structure preserved in the fullstack scaffold
+- [x] Evidence-based hero narrative and impact-focused bio for Sahil Gaikwad
+- [x] IEEE Machine Learning Research Intern experience section
+- [x] Education and leadership / community section
+- [x] Categorized technical skill stack with interactive filtering or exploration
+- [x] UAV Strategic Deconfliction interactive case study
+- [x] DistilBERT from-scratch implementation interactive case study
+- [x] MindVault interactive case study
+- [x] AURA Smart Glasses interactive case study
+- [x] Case study expandable details for architecture, outcomes, and stack tags
+- [x] Scroll-driven section reveals with reduced-motion support
+- [x] Pointer-reactive signal diagrams
+- [x] Project filtering interaction
+- [x] Keyboard-accessible quick navigation
+- [x] Contact CTA using thelifeofsahil@gmail.com
+- [x] Editable GitHub and LinkedIn destinations without inventing unavailable repository links
+- [x] Responsive layouts for desktop, tablet, and mobile
+- [x] Vitest coverage for portfolio interaction/data helpers
+- [x] Browser visual and functional QA
+- [x] Final build/typecheck/test verification
+- [x] Include client portfolio tests in the standard Vitest configuration
+- [x] Add testable interaction helpers for project filtering, quick-navigation shortcuts, and email copy fallback
+- [x] Cover interaction helpers with Vitest
+- [x] Perform functional QA for expansion, filtering, quick navigation, mobile menu, and contact actions
+- [x] Perform browser QA to verify case-study expansion reveals architecture, outcome, stack, and metrics
+- [x] Perform mobile-browser QA to open and close the mobile menu and confirm nav links remain usable
+- [x] Exercise contact actions in-browser: verify mailto/email-copy behavior and GitHub destination behavior
+- [x] Perform interactive QA at a true mobile viewport: open the mobile menu, click a nav link, and verify it navigates and closes correctly
+- [x] Verify email copy success or explicitly exercise the mailto fallback path end-to-end
