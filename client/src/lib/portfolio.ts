@@ -24,71 +24,30 @@ export const socialLinks = {
 
 export const projects: Project[] = [
   {
-    id: "uav",
+    id: "eduswarm",
     index: "01",
-    title: "UAV / strategic deconfliction",
-    kicker: "Safety logic for shared airspace",
-    category: "Systems",
-    year: "2025",
-    summary:
-      "A mission-safety prototype that checks waypoint routes for spatial proximity and temporal overlap before a UAV ever takes off.",
-    architecture:
-      "Mission waypoints enter a deterministic validation pipeline. Spatial proximity checks are paired with time-window overlap analysis, then surfaced through Matplotlib views that separate safe, warning, and conflict scenarios.",
-    outcome:
-      "Delivered a working safety-validation prototype and a clear path toward 3D / 4D deconfliction for more complex airspace planning.",
-    stack: ["Python", "Systems design", "Matplotlib", "Algorithms"],
-    metrics: [
-      { label: "Core function", value: "check_mission_safety" },
-      { label: "Expansion path", value: "3D / 4D space-time" },
-    ],
-    accent: "lime",
-    visual: "uav",
-  },
-  {
-    id: "distilbert",
-    index: "02",
-    title: "DistilBERT / from first principles",
-    kicker: "A transformer, made legible",
+    title: "EduSwarm / multi-agent learning platform",
+    kicker: "Specialist agents, one learning path",
     category: "AI / ML",
-    year: "2025",
+    year: "2026",
     summary:
-      "A from-scratch implementation that turns transformer math and knowledge distillation into an inspectable engineering system.",
+      "The premise: a curriculum topic shouldn't be a static page someone wrote once — it should be a job a team of specialist agents can execute on demand, and refuse to complete rather than hallucinate through.",
     architecture:
-      "The pipeline composes custom self-attention, positional embeddings, layer normalization, and a distillation objective that combines KL divergence with cross-entropy loss.",
+      "Three services, three concerns, no shared runtime. The web app and Express API own auth (Google OAuth, signed HttpOnly sessions), persistence (MongoDB), and everything synchronous. Submitting a topic doesn't block on generation — it enqueues a job and the client subscribes to progress over SSE, fanned out through Redis pub/sub so any API instance can push updates regardless of which one accepted the request. The actual work happens in a separate FastAPI + LangGraph runtime: a checkpointed state graph so a crashed or restarted job resumes instead of re-running from scratch, local embeddings so retrieval doesn't take a second model-API dependency, and Qdrant for the vector store in production. The core constraint driving the design: nothing gets published without evidence. Every generated artifact is checked against what was actually retrieved, and a job that can't produce an approved package fails loudly and inspectably — logged as a failed job, not silently degraded output. Provider config, GATE CSE / full-stack / AI-ML content tracks, and the Render blueprint are all designed to fail the same way: visibly, at request time, never mid-generation.",
     outcome:
-      "Reached 40% model compression while retaining 95%+ performance, making the compact architecture easier to run and reason about.",
-    stack: ["Python", "PyTorch", "Transformers", "NLP"],
+      "Shipped vertical slice: learners switch between GATE CSE, full-stack, and AI/ML tracks, run PYQ quizzes filtered by subject/topic/year, and get routed to specialist agents matched to their specific obstacle rather than a generic tutor. Deployed as three independently scalable services behind one Render blueprint, with a regression suite that specifically covers the failure path — a topic request with no provider configured is asserted to persist as a failed job, not crash the request handler.",
+    stack: ["React", "TypeScript", "Express", "FastAPI", "LangGraph", "Qdrant", "MongoDB", "Redis"],
     metrics: [
-      { label: "Compression", value: "40% smaller" },
-      { label: "Retention", value: "95%+ performance" },
-    ],
-    accent: "coral",
-    visual: "bert",
-  },
-  {
-    id: "mindvault",
-    index: "03",
-    title: "MindVault / personal knowledge OS",
-    kicker: "Your knowledge, fully yours",
-    category: "Full-stack",
-    year: "2025",
-    summary:
-      "A local-first knowledge system that ingests notes, documents, and web clippings, then makes them searchable and useful without shipping private data away.",
-    architecture:
-      "React and Flask frame an on-device pipeline: ingest text, Markdown, PDFs, or web clips; chunk and index with TF-IDF; enrich with a self-hosted LLM; and retrieve with RAG. SQLite keeps the data local.",
-    outcome:
-      "Designed a privacy-first workflow with semantic search, concise answers, automated tagging, and spaced repetition — zero external dependencies by default.",
-    stack: ["React", "Flask", "SQLite", "TF-IDF", "RAG"],
-    metrics: [
-      { label: "Data posture", value: "On-device" },
-      { label: "Retrieval", value: "TF-IDF + RAG" },
+      { label: "Runtime", value: "LangGraph + RAG" },
+      { label: "Publishing", value: "Evidence-gated" },
     ],
     accent: "blue",
-    visual: "vault",
+    visual: "swarm",
+    links: [{ label: "GitHub", href: "https://github.com/sahil-gaikwad94/eduswarm" }],
   },
   {
     id: "aura",
-    index: "04",
+    index: "02",
     title: "AURA / AI smart glasses",
     kicker: "Ambient computing, made tangible",
     category: "Systems",
@@ -108,26 +67,67 @@ export const projects: Project[] = [
     visual: "aura",
   },
   {
-    id: "eduswarm",
-    index: "05",
-    title: "EduSwarm / multi-agent learning platform",
-    kicker: "Specialist agents, one learning path",
+    id: "distilbert",
+    index: "03",
+    title: "DistilBERT / from first principles",
+    kicker: "A transformer, made legible",
     category: "AI / ML",
-    year: "2026",
+    year: "2025",
     summary:
-      "The premise: a curriculum topic shouldn't be a static page someone wrote once — it should be a job a team of specialist agents can execute on demand, and refuse to complete rather than hallucinate through.",
+      "A from-scratch implementation that turns transformer math and knowledge distillation into an inspectable engineering system.",
     architecture:
-      "Three services, three concerns, no shared runtime. The web app and Express API own auth (Google OAuth, signed HttpOnly sessions), persistence (MongoDB), and everything synchronous. Submitting a topic doesn't block on generation — it enqueues a job and the client subscribes to progress over SSE, fanned out through Redis pub/sub so any API instance can push updates regardless of which one accepted the request. The actual work happens in a separate FastAPI + LangGraph runtime: a checkpointed state graph so a crashed or restarted job resumes instead of re-running from scratch, local embeddings so retrieval doesn't take a second model-API dependency, and Qdrant for the vector store in production. The core constraint driving the design: nothing gets published without evidence. Every generated artifact is checked against what was actually retrieved, and a job that can't produce an approved package fails loudly and inspectably — logged as a failed job, not silently degraded output. Provider config, GATE CSE / full-stack / AI-ML content tracks, and the Render blueprint are all designed to fail the same way: visibly, at request time, never mid-generation.",
+      "The pipeline composes custom self-attention, positional embeddings, layer normalization, and a distillation objective that combines KL divergence with cross-entropy loss.",
     outcome:
-      "Shipped vertical slice: learners switch between GATE CSE, full-stack, and AI/ML tracks, run PYQ quizzes filtered by subject/topic/year, and get routed to specialist agents matched to their specific obstacle rather than a generic tutor. Deployed as three independently scalable services behind one Render blueprint, with a regression suite that specifically covers the failure path — a topic request with no provider configured is asserted to persist as a failed job, not crash the request handler.",
-    stack: ["React", "TypeScript", "Express", "FastAPI", "LangGraph", "Qdrant", "MongoDB", "Redis"],
+      "Reached 40% model compression while retaining 95%+ performance, making the compact architecture easier to run and reason about.",
+    stack: ["Python", "PyTorch", "Transformers", "NLP"],
     metrics: [
-      { label: "Runtime", value: "LangGraph + RAG" },
-      { label: "Publishing", value: "Evidence-gated" },
+      { label: "Compression", value: "40% smaller" },
+      { label: "Retention", value: "95%+ performance" },
+    ],
+    accent: "coral",
+    visual: "bert",
+  },
+  {
+    id: "uav",
+    index: "04",
+    title: "UAV / strategic deconfliction",
+    kicker: "Safety logic for shared airspace",
+    category: "Systems",
+    year: "2025",
+    summary:
+      "A mission-safety prototype that checks waypoint routes for spatial proximity and temporal overlap before a UAV ever takes off.",
+    architecture:
+      "Mission waypoints enter a deterministic validation pipeline. Spatial proximity checks are paired with time-window overlap analysis, then surfaced through Matplotlib views that separate safe, warning, and conflict scenarios.",
+    outcome:
+      "Delivered a working safety-validation prototype and a clear path toward 3D / 4D deconfliction for more complex airspace planning.",
+    stack: ["Python", "Systems design", "Matplotlib", "Algorithms"],
+    metrics: [
+      { label: "Core function", value: "check_mission_safety" },
+      { label: "Expansion path", value: "3D / 4D space-time" },
+    ],
+    accent: "lime",
+    visual: "uav",
+  },
+  {
+    id: "mindvault",
+    index: "05",
+    title: "MindVault / personal knowledge OS",
+    kicker: "Your knowledge, fully yours",
+    category: "Full-stack",
+    year: "2025",
+    summary:
+      "A local-first knowledge system that ingests notes, documents, and web clippings, then makes them searchable and useful without shipping private data away.",
+    architecture:
+      "React and Flask frame an on-device pipeline: ingest text, Markdown, PDFs, or web clips; chunk and index with TF-IDF; enrich with a self-hosted LLM; and retrieve with RAG. SQLite keeps the data local.",
+    outcome:
+      "Designed a privacy-first workflow with semantic search, concise answers, automated tagging, and spaced repetition — zero external dependencies by default.",
+    stack: ["React", "Flask", "SQLite", "TF-IDF", "RAG"],
+    metrics: [
+      { label: "Data posture", value: "On-device" },
+      { label: "Retrieval", value: "TF-IDF + RAG" },
     ],
     accent: "blue",
-    visual: "swarm",
-    links: [{ label: "GitHub", href: "https://github.com/sahil-gaikwad94/eduswarm" }],
+    visual: "vault",
   },
   {
     id: "futureme",
