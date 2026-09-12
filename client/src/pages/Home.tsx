@@ -201,7 +201,7 @@ export default function Home() {
         <div className="hero-copy reveal">
           <div className="eyebrow eyebrow-accent"><span className="eyebrow-line" /> AI / SYSTEMS / IMPACT</div>
           <h1>I build <em>useful</em><br /><span>intelligence.</span></h1>
-          <p className="hero-lede">Sahil Gaikwad is an AI, agentic-systems, and backend engineer turning deep technical ideas into prototypes people can actually feel.</p>
+          <p className="hero-lede">Hey!! I'm Sahil Gaikwad an AI, agentic-systems, and backend engineer turning deep technical ideas into prototypes people can actually feel.</p>
           <div className="hero-actions"><a className="button button--lime" href="#work">Explore the signal <ArrowDownRight size={17} /></a><button className="text-button" onClick={copyEmail}>{copied ? <Check size={15} /> : <Copy size={15} />} {copied ? "email copied" : "copy email"}</button></div>
         </div>
         <div className="hero-field-wrap reveal"><SignalField /></div>
